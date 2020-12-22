@@ -27,22 +27,23 @@ function setup()
 function draw()
 {
     background(0);
-    streams.forEach(function(stream) {
-        stream.render();
-    });
+    streams.forEach(stream => stream.render());
 }
 
-function Symbol(x, y, speed) {
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
-    this.value;
+class Symbol {
+    constructor(x, y, speed) {
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.value;
+    }
 
-    this.setToRandomSymbol = function() {
+
+    setToRandomSymbol() {
         this.value = String.fromCharCode(0x30A0 + round(random(0, 95)));
     }
 
-    this.render = function() {
+    render() {
         fill(0, 255, 70);
         text(this.value, this.x, this.y);
         this.rain()
@@ -50,10 +51,9 @@ function Symbol(x, y, speed) {
             this.setToRandomSymbol();
     }
 
-    this.rain = function() {
+    rain() {
         this.y = (this.y >= height + symbolSize) ? 0 : this.speed + this.y;
     }
-
 }
 
 
