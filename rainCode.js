@@ -73,8 +73,6 @@ function Stream()
     }
 
     this.render = function() {
-        this.symbols.forEach(function(symbol) {
-            symbol.render()
-        });
+        this.symbols.forEach(symbol => symbol.render());
     }
 }
